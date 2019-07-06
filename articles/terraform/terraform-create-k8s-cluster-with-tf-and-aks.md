@@ -132,14 +132,6 @@ Create the Terraform configuration file that declares the resources for the Kube
         resource_group_name = "${azurerm_resource_group.k8s.name}"
         dns_prefix          = "${var.dns_prefix}"
 
-        linux_profile {
-            admin_username = "ubuntu"
-
-            ssh_key {
-                key_data = "${file("${var.ssh_public_key}")}"
-            }
-        }
-
         agent_pool_profile {
             name            = "agentpool"
             count           = "${var.agent_count}"
